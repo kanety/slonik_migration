@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+require 'optparse'
+OptionParser.new { |opt|
+  opt.on('-c [SQL]') { |sql| puts sql }
+  opt.parse(ARGV)
+}

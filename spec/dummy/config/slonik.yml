@@ -1,0 +1,14 @@
+default: &default
+  command: $slonik_execute_script -c $SQL 1 | sed "s/set id = 1,//" | $slonik
+  variables:
+    slonik_execute_script: <%= "#{Rails.root}/bin/slonik_execute_script" %>
+    slonik: <%= "#{Rails.root}/bin/slonik" %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
