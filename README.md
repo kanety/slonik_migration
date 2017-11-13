@@ -1,6 +1,6 @@
 # SlonikMigration
 
-A rails migration gem for slony using slonk_execute_script command.
+A rails migration gem for slony using `slonik_execute_script` command.
 
 ## Dependencies
 
@@ -55,9 +55,13 @@ Migrate:
 
     $ bundle exec rake slonik:db:migrate RAILS_ENV=production
 
-Specify config file:
+Migrate with specify config file:
 
     $ bundle exec rake slonik:db:migrate RAILS_ENV=production CONFIG=/path/to/slonik.yml
+
+Migration command executes `slonik_execute_command` as the following example:
+
+    slonik_execute_script -c CREATE\ TABLE\ \"test_tables\"\ \(\"id\"\ bigserial\ primary\ key,\ \"title\"\ text\) 1 | sed "s/set id = 1,//" | slonik    
 
 ## Contributing
 
@@ -65,4 +69,8 @@ Bug reports and pull requests are welcome at https://github.com/kanety/slonik_mi
 
 ## Reference
 
-This gem is inspired by the discussions [here](http://justatheory.com/computers/databases/postgresql/rails_and_slony.html)
+This gem is inspired by the discussions [here](http://justatheory.com/computers/databases/postgresql/rails_and_slony.html).
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
