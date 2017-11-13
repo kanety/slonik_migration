@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Yoshikazu Kaneta"]
   spec.email         = ["kaneta@sitebridge.co.jp"]
   spec.summary       = %q{A rails migration gem for slony}
-  spec.description   = %q{A rails migration gem for slony using slonk_execute_script command}
+  spec.description   = %q{A rails migration gem for slony using slonik_execute_script command}
   spec.homepage      = "https://github.com/kanety/slonik_migration"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
