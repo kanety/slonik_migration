@@ -1,7 +1,7 @@
 require 'slonik_migration/config'
 require 'slonik_migration/extension'
 
-if SlonikMigration::Config.load[:enabled]
+if SlonikMigration::Config.load.enabled
   namespace :slonik do
     task :migration do
       SlonikMigration::Extension.overwrite

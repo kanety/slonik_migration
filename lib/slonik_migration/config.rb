@@ -1,10 +1,12 @@
+require 'ostruct'
+
 module SlonikMigration
   class Config
     class << self
       def load
         file = config_file
         env = ENV['RAILS_ENV'] || 'development'
-        YAML.load(ERB.new(IO.read(file)).result)[env].deep_symbolize_keys
+        OpenStruct.new(YAML.load(ERB.new(IO.read(file)).result)[env]).freeze
       end
 
       private
