@@ -5,7 +5,7 @@ A rails migration gem for slony using `slonik_execute_script` command.
 ## Dependencies
 
 * ruby 2.3+
-* active_record 5.0+
+* activerecord 5.0+
 * slony 2.2+
 
 ## Installation
@@ -30,6 +30,9 @@ Edit `config/slonik.yml`.
 
 ```yaml
 default: &default
+  # enable migration with slonik
+  enabled: true
+
   # slonik command. $SQL is replaced with raw SQL.
   command: slonik_execute_script -c $SQL 1 | sed "s/set id = 1,//" | slonik
 
@@ -51,13 +54,21 @@ production:
 
 ## Usage
 
-Migrate:
+This gem enhances following rails commands:
 
-    $ bundle exec rake slonik:db:migrate RAILS_ENV=production
+* db:migrate
+* db:migrate:up
+* db:migrate:down
 
-Migrate with specify config file:
+You can use migration command as usual:
 
-    $ bundle exec rake slonik:db:migrate RAILS_ENV=production CONFIG=/path/to/slonik.yml
+    $ bundle exec rake db:migrate RAILS_ENV=production
+
+If you want to specify config file:
+
+    $ bundle exec rake db:migrate RAILS_ENV=production CONFIG=/path/to/slonik.yml
+
+## Execution example
 
 Migration command executes `slonik_execute_command` as the following example:
 
@@ -69,7 +80,7 @@ Bug reports and pull requests are welcome at https://github.com/kanety/slonik_mi
 
 ## Reference
 
-This gem is inspired by the discussions [here](http://justatheory.com/computers/databases/postgresql/rails_and_slony.html).
+This gem is inspired by [the discussions](http://justatheory.com/computers/databases/postgresql/rails_and_slony.html).
 
 ## License
 
