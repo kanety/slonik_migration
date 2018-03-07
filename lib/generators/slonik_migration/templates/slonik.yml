@@ -1,4 +1,7 @@
 default: &default
+  # enable migration with slonik
+  enabled: true
+
   # slonik command. $SQL is replaced with raw SQL.
   command: slonik_execute_script -c $SQL 1 | sed "s/set id = 1,//" | slonik
 

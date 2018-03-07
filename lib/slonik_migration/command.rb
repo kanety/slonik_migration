@@ -4,9 +4,7 @@ require 'shellwords'
 module SlonikMigration
   class Command
     def initialize
-      config_file = ENV['CONFIG_FILE'] || 'config/slonik.yml'
-      env = ENV['RAILS_ENV'] || 'development'
-      @config = YAML.load(ERB.new(IO.read(config_file)).result)[env].deep_symbolize_keys
+      @config = SlonikMigration::Config.load
     end
 
     def execute(sql, options = {})
