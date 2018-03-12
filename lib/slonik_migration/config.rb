@@ -6,7 +6,13 @@ module SlonikMigration
       def load
         file = config_file
         env = ENV['RAILS_ENV'] || 'development'
-        OpenStruct.new(YAML.load(ERB.new(IO.read(file)).result)[env]).freeze
+
+        hash = if File.exist?(file)
+                 YAML.load(ERB.new(IO.read(file)).result)[env]
+               else
+                 {}
+               end
+        OpenStruct.new(hash).freeze
       end
 
       private
