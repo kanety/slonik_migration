@@ -17,8 +17,10 @@ module SlonikMigration
 
     def build(sql, target: nil, name: nil, owner: nil)
       sql << %Q|; ALTER #{target} "#{name}" OWNER TO #{@config.owner}| if target && name && @config.owner
-      @config.command.gsub(%r{\$SQL}, Shellwords.escape(sql))
-                     .gsub(%r{\$(\w+)}) { replace($1) }
+      command = @config.command.dup
+      command.gsub!(%r{\$SQL}) { Shellwords.escape(sql) }
+      command.gsub!(%r{\$(\w+)}) { replace($1) }
+      command
     end
 
     def replace(key)
