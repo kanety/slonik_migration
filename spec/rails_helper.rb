@@ -11,9 +11,7 @@ RSpec.configure do |config|
   config.before :suite do
     ENV['CONFIG_FILE'] = Rails.root.join('config/slonik.yml').to_s
     ENV['VERBOSE'] = 'true'
-    Rake::Task['db:create'].invoke
-  end
-  config.after :suite do
     Rake::Task['db:drop'].invoke
+    Rake::Task['db:create'].invoke
   end
 end
