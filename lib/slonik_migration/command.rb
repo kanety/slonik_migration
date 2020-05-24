@@ -8,7 +8,7 @@ module SlonikMigration
     end
 
     def execute(sql, options = {})
-      command = build(sql, options)
+      command = build(sql, **options)
       puts command if ENV['VERBOSE']
       system command
     end
