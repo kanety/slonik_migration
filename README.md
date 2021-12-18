@@ -4,7 +4,7 @@ A rails migration gem for slony using `slonik_execute_script` command.
 
 ## Dependencies
 
-* ruby 2.3+
+* ruby 2.4+
 * activerecord 5.0+
 * slony 2.2+
 
