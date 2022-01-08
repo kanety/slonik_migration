@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.2.0
+
+* Support ruby 3.1.
+* Drop support for ruby 2.3.
+
 ## 1.1.3
 
 * Fix deprecation warning for ruby 2.7.
