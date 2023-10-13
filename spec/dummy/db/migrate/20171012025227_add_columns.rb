@@ -1,4 +1,4 @@
-class AddColumns < ActiveRecord::Migration[5.0]
+class AddColumns < ActiveRecord::Migration::Current
   def change
     add_column :test_tables, :column, :text
   end
