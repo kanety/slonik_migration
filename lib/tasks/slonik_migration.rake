@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'slonik_migration/config'
 require 'slonik_migration/extension'
 
