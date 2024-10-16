@@ -1,13 +1,19 @@
 # frozen_string_literal: true
 
-require 'ostruct'
-
 module SlonikMigration
   class Config
+    attr_accessor :enabled, :owner, :command, :variables
+
+    def initialize(hash)
+      hash.each do |key, val|
+        send("#{key}=", val) if respond_to?("#{key}=")
+      end
+    end
+
     class << self
       def load
         hash = load_file
-        OpenStruct.new(hash).freeze
+        Config.new(hash).freeze
       end
 
       private
