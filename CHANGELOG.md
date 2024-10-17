@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.2.2
+
+* Remove `ostruct` from dependencies.
+
 ## 1.2.1
 
 * Add `frozen_string_literal: true`.
